@@ -20,7 +20,7 @@ class image_converter:
     self.bridge = CvBridge()
     self.image_sub = rospy.Subscriber("/mybot/camera1/image_raw", Image, self.callback)
 
-  def liquid_level(self,data):
+  def dataFilter(self,data):
 
     img_x = cv2.cvtColor(data,cv2.COLOR_RGB2GRAY)
 
@@ -43,7 +43,7 @@ class image_converter:
 #    if cols > 60 and rows > 60 :
 #      cv2.circle(cv_image, (int(rows/2),int(cols/2)), 100, 25, 10)
 #      cv2.putText(cv_image, "This is the first time I could do this shit",(10,50),cv2.FONT_HERSHEY_COMPLEX, 0.5, (0,255,0),2)
-    cv2.imshow("Image window", self.liquid_level(cv_image))
+    cv2.imshow("Image window", self.dataFilter(cv_image))
     cv2.waitKey(3)
 
     try:
